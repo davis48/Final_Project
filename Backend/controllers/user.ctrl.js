@@ -22,16 +22,16 @@ const updateUser = async (req, res) => {
     }
 }
 
-const getOwnerUsers = async (req, res) => {
-    try {
-        const ownerId = req.params.id;
-        const users = await UserRepo.getOwner(ownerId);
-        res.status(200).json(users);
-    }
-    catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}
+// const getOwnerUsers = async (req, res) => {
+//     try {
+//         const ownerId = req.params.id;
+//         const users = await UserRepo.getOwner(ownerId);
+//         res.status(200).json(users);
+//     }
+//     catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// }
 
 const findOneUser = async (req, res) => {
     try {
@@ -59,7 +59,6 @@ const deleteUser = async (req, res) => {
 module.exports = {
     postUser,
     updateUser,
-    getOwner,
     findOneUser,
     deleteUser
 }; // Export the controller functions for use in the router
