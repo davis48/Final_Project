@@ -13,19 +13,21 @@ const userSchema = new Schema({
                 throw new Error('Email is invalid')
             }
         },
-        is_active: {
-            type: Boolean,
-            default: false,
-            required: true,
+ },
 
-        },
-        password: {
-            type: String,
-            required: true,
-            minlength: 8,
-            trim: true
-        }
-    },
+ is_active: {
+    type: Boolean,
+    default: false,
+    required: true,
+
+},
+
+password: {
+    type: String,
+    required: true,
+    minlength: 8,
+    trim: true
+}
 })
 
 const User = model('user', userSchema);

@@ -1,8 +1,11 @@
 const {Task, User} = require('../model');
 
-const createUser = async (userData) => {
+const createUser = async (data) => {
+    console.log("data: ", data)
     try {
-        const user = await User.create(userData);
+        const instance = new User(data);
+        const user = await instance.save();
+        console.log("user: ", user)
         return user;
     } catch (error) {
         throw new Error('Error creating user: ' + error.message);

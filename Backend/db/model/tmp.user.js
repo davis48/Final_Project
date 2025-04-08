@@ -6,35 +6,22 @@ const hashedPassword = require('../../utilitaire/hashed.password');
 const tmpUserSchema = new Schema({
     name: { type: String, required: true, trim: true },
 
-    email: { type: String,
+    email: {
+        type: String,
         required: true,
         unique: true,
         trim: true,
         lowercase: true,
-        validate(value){
-            if (!validator.isEmail(value)){
+        validate(value) {
+            if (!validator.isEmail(value)) {
                 throw new Error('Email is invalid')
             }
-        },
-            active: {
-            type: Boolean,
-            default: false,
-            required: true,
-
-        },
-        token: {
-            type: String,
-            required: true,
-            trim: true
-        },
-
-        password: {
-            type: String,
-            required: true,
-            minlength: 8,
-            trim: true
         }
     },
+    active: { type: Boolean, default: false },
+    token: { type: String },
+
+    password: { type: String, required: true, minlength: 8, trim: true },
 
     createdAt: {
         type: Date,
